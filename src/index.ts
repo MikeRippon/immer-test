@@ -32,6 +32,13 @@ export const usePerson = () => {
         [mutatePerson1]
     )
 
+    const increaseAgePerson2 = useCallback(
+        () => mutatePerson2(draft => {
+            draft.age++
+        }),
+        [mutatePerson2]
+    )
+
     const increaseAgePerson2Nested = useCallback(
         () => mutatePerson2(draft => produce(draft, draft2 => {
             draft2.age++ // BUG
@@ -54,6 +61,7 @@ export const usePerson = () => {
         mutatePerson3,
         increaseAgePerson1Nested,
         increaseAgePerson2Nested,
+        increaseAgePerson2,
         increaseAgePerson3Nested,
     }
 }
